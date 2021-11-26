@@ -21,5 +21,3 @@ The parameters to learn are $\Phi = (\mathbf{a},\mathbf{b})$
 - `PositiveLinearTransformation` : $T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(u)=\mathbf{A}u + \mathbf{b} = {x}$, 
 where $\mathbf{A}$ is a matrix with non-negative components only. 
 The parameters to learn are $\Phi = (\mathbf{A},\mathbf{b})$.
-
-![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}) 
