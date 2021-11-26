@@ -1,4 +1,4 @@
-"""Implementation of different flow architectures"""
+"""Implementation of different flow architectures."""
 
 import torch
 import torch.nn as nn
