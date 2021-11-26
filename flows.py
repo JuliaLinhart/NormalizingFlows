@@ -35,10 +35,6 @@ class Flow(object):
 
     def learned_pdf(self,x):
         u, log_jac_det_inv = self.transform.inverse_transform(x)
-        # print(u)
-        # print(log_jac_det_inv)
         p_u = torch.exp(self.base_dist.log_prob(u))
-        # print(p_u)
         p_x = p_u * torch.exp(log_jac_det_inv)
-        # print(p_x)
         return p_x
