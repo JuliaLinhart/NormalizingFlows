@@ -3,7 +3,7 @@ Pytorch implementation of some flow architectures.
 
 The core structure of the flow is implemented in `flows.py`. 
 
-The `Flow` object is defined by a *base distribution* $p_u$ and a *transformation* $T$ with parameters $\Phi$.
+The `Flow` object is defined by a *base distribution* $p_u$ and a *transformation* \\(T\\) with parameters $\Phi$.
 - We can learn the parameters $\Phi$, fitting the flow-based model to a set of observations `x_samples` by MLE in order to approximate the corresponding density $p_x$ by calling the `train` method.
 - We can `sample` from this `Flow`-object and evaluate its density function `learned_pdf` based on the following formulas:
 $$ x = T(u; \Phi), \quad u \sim p_u(u)$$
