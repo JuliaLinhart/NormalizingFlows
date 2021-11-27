@@ -30,5 +30,5 @@ The parameters to learn are $`\Phi = (\mathbf{a},\mathbf{b})`$
 ```math
 T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A}\mathbf{u} + \mathbf{b} = \mathbf{x}
 ```
-where $`\mathbf{A}`$ is a matrix with non-negative components only. 
+where $`\mathbf{A}`$ is a $`d \times d`$ matrix with non-negative components only. 
 The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
