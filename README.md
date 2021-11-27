@@ -6,7 +6,7 @@ The core structure of the flow is implemented in `flows.py`.
 The `Flow` object is defined by a *base distribution* $`p_u`$ and a *transformation* $`T`$ with parameters $`\Phi`$.
 - We can *learn the parameters $`\Phi`$*, fitting the flow-based model to a set of observations `x_samples` by MLE in order to approximate the corresponding density $`p_x`$ by calling the `train` method.
 - We can *easily sample* from this Flow-object (`sample` method) and *evaluate its probability density function* (`learned_log_pdf` method). 
-These are the main features of the `Flow`-object, that are based on the following formulas:
+These are the main features of the Flow-object, that are based on the following formulas:
 
 For sampling we use the *forward transformation*:
 ```math \mathbf{x} = T(\mathbf{u}; \Phi), \quad \mathbf{u} \sim p_u(\mathbf{u})$$
