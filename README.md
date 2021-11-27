@@ -9,26 +9,26 @@ The `Flow` object is defined by a *base distribution* $`p_u`$ and a *transformat
 These are the main features of the `Flow`-object, that are based on the following formulas:
 
 For sampling we use the `forward_transformation`:
-    ```math \mathbf{x} = T(\mathbf{u}; \Phi), \quad \mathbf{u} \sim p_u(\mathbf{u})$$
-    ```
+```math \mathbf{x} = T(\mathbf{u}; \Phi), \quad \mathbf{u} \sim p_u(\mathbf{u})$$
+```
 
 To evaluate the pdf we use the `inverse_transformation`:
-    ```math
-    \begin{aligned}
-    p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorname{det} J_{T}(\mathbf{u}; \Phi)\right|^{-1} \quad \text { where } \quad \mathbf{u}=T^{-1}(\mathbf{x}; \Phi) \\
-    & = p_{\mathrm{u}}\left(T^{-1}(\mathbf{x}; \Phi)\right)\left|\operatorname{det} J_{T^{-1}}(\mathbf{x}; \Phi)\right|
-    \end{aligned}
-    ```
+```math
+\begin{aligned}
+p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorname{det} J_{T}(\mathbf{u}; \Phi)\right|^{-1} \quad \text { where } \quad \mathbf{u}=T^{-1}(\mathbf{x}; \Phi) \\
+& = p_{\mathrm{u}}\left(T^{-1}(\mathbf{x}; \Phi)\right)\left|\operatorname{det} J_{T^{-1}}(\mathbf{x}; \Phi)\right|
+\end{aligned}
+```
 
 The different transformations are implemented in `transforms.py`:
 - `AffineElementwiseTransform` : 
-    ```math 
-    T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d) = \mathbf{x}
-    ```
+```math 
+T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d) = \mathbf{x}
+```
 The parameters to learn are $`\Phi = (\mathbf{a},\mathbf{b})`$
 - `PositiveLinearTransformation` : 
-    ```math 
-    T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A\mathbf{u} + \mathbf{b} = \mathbf{x}
-    ```
+```math 
+T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A\mathbf{u} + \mathbf{b} = \mathbf{x}
+```
 where $`\mathbf{A}`$ is a matrix with non-negative components only. 
 The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
