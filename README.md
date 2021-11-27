@@ -27,10 +27,8 @@ T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots,
 ```
 The parameters to learn are $`\Phi = (\mathbf{a},\mathbf{b})`$
 - `PositiveLinearTransformation` : 
-
 ```math
-T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A\mathbf{u} + \mathbf{b} = \mathbf{x}
+T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A}\mathbf{u} + \mathbf{b} = \mathbf{x}
 ```
-
 where $`\mathbf{A}`$ is a matrix with non-negative components only. 
 The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
