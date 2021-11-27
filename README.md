@@ -20,6 +20,9 @@ p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorna
 \end{aligned}
 ```
 
+```math T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d)
+```
+
 The different transformations are implemented in `transforms.py`:
 `AffineElementwiseTransform` : 
 ```math T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d)
