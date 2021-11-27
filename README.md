@@ -21,3 +21,5 @@ The parameters to learn are $\Phi = (\mathbf{a},\mathbf{b})$
 - `PositiveLinearTransformation` : $T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(u)=\mathbf{A}u + \mathbf{b} = {x}$, 
 where $\mathbf{A}$ is a matrix with non-negative components only. 
 The parameters to learn are $\Phi = (\mathbf{A},\mathbf{b})$.
+
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
