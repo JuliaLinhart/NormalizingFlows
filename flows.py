@@ -19,9 +19,9 @@ class Flow(object):
             for sample_batch in train_loader:
                 opt.zero_grad()
 
-                p_x = self.learned_pdf(sample_batch)
+                log_p_x = self.learned_log_pdf(sample_batch)
 
-                loss = -torch.log(p_x).sum()
+                loss = -log_p_x.sum()
                 loss.backward()
                 opt.step()
 
@@ -30,10 +30,8 @@ class Flow(object):
         x_samples, _ = self.transform.forward_transform(u_samples)
         return x_samples
 
-    def learned_pdf(self, x):
-        # I would return the log_pdf to avoid doing an exp and then
-        # a log immediatly after it
+    def learned_log_pdf(self, x):
         u, log_jac_det_inv = self.transform.inverse_transform(x)
-        p_u = torch.exp(self.base_dist.log_prob(u))
-        p_x = p_u * torch.exp(log_jac_det_inv)
-        return p_x
+        log_p_u = self.base_dist.log_prob(u)
+        log_p_x = log_p_u + log_jac_det_inv
+        return log_p_x

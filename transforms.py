@@ -1,4 +1,4 @@
-"""Implementation of some transformers"""
+"""Implementation of some transformers."""
 
 import torch
 import torch.nn as nn
