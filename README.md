@@ -23,11 +23,12 @@ p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorna
 The different transformations are implemented in `transforms.py`:
 - `AffineElementwiseTransform` : 
 ```math 
-T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d)
+T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d) = \mathbf{x}
 ```
 The parameters to learn are $`\Phi = (\mathbf{a},\mathbf{b})`$
 - `PositiveLinearTransformation` : 
-```math T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A\mathbf{u} + \mathbf{b} = \mathbf{x}
+```math 
+T: \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A\mathbf{u} + \mathbf{b} = \mathbf{x}
 ```
-where $`\mathbf{A}`$ is a matrix with non-negative components only. 
-The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
+    where $`\mathbf{A}`$ is a matrix with non-negative components only. 
+    The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
