@@ -1,6 +1,8 @@
 # NormalizingFlows
 Pytorch implementation of some flow architectures.
 
+Please use [this](https://chrome.google.com/webstore/detail/xhub/anidddebgkllnnnnjfkmjcaallemhjee/related) Google Chrome extension to visualise equations in the *Readme.md* file.
+
 The core structure of the flow is implemented in `flows.py`. 
 
 The `Flow` object is defined by a *base distribution* $`p_u`$ and a *transformation* $`T`$ with parameters $`\Phi`$.
