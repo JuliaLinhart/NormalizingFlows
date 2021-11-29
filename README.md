@@ -1,6 +1,8 @@
 # NormalizingFlows
 Pytorch implementation of some flow architectures.
 
+Please use [this](https://chrome.google.com/webstore/detail/xhub/anidddebgkllnnnnjfkmjcaallemhjee/related) Google Chrome extension to visualise equations in the *Readme.md* file.
+
 ## Project Description
 
 ### The Flow object 
