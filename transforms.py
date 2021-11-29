@@ -39,10 +39,6 @@ class PositiveLinearTransform():
     def reset_parameters(self):
         nn.init.xavier_uniform_(self.log_weight)
 
-    def param_generator(self):
-        for param in [self.log_weight, self.bias]:
-            yield param
-
     def forward_transform(self, u):
         A = self.log_weight.exp()
         out = F.linear(u, A) + self.bias

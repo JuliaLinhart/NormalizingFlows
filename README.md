@@ -1,6 +1,10 @@
 # NormalizingFlows
 Pytorch implementation of some flow architectures.
 
+## Project Description
+
+### The Flow object 
+
 The core structure of the flow is implemented in `flows.py`. 
 
 The `Flow` object is defined by a *base distribution* $`p_u`$ and a *transformation* $`T`$ with parameters $`\Phi`$.
@@ -20,7 +24,10 @@ p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorna
 \end{aligned}
 ```
 
-The different transformations are implemented in `transforms.py`:
+### Transformations 
+
+The different transformations are implemented in `transforms.py`. They are defined by a set of learnable parameters $`\Phi`$ using pytorch's `torch.nn.Parameter` class and the above mentioned methods `forward_transform` and `inverse_transform`.
+
 - `AffineElementwiseTransform` : 
 ```math 
 T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u}) = (a_1u_1 + b_1, \dots, a_du_d + b_d) = (x_1, \dots, x_d) = \mathbf{x}
@@ -32,3 +39,4 @@ T : \mathbf{u} = (u_1, \dots, u_d) \mapsto T(\mathbf{u})=\mathbf{A}\mathbf{u} + 
 ```
 where $`\mathbf{A}`$ is a $`d \times d`$ matrix with non-negative components only. 
 The parameters to learn are $`\Phi = (\mathbf{A},\mathbf{b})`$.
+
