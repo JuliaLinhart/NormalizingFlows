@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import torch
 import seaborn as sns
 
+############### Plot functions for myflow Flows ############################
+
 # 1D distributions: Evaluate the learnt transformation by plotting the learnt p_x 
 # against the true distribution and the training samples (drawn from the true distribution)
 def plot_pdfs_1D(target_dist, x_samples, flow, title=None, x_i=0.1, x_f=15, n=100):
@@ -40,4 +42,31 @@ def plot_2d_pdf_contours(target_dist, x_samples, flow, title=None, n=500, gaussi
         plt.scatter(x=means_learned[0], y=means_learned[1], color='magenta')
     
     plt.title(title)
+    plt.show()
+
+############### Plot functions for nf_flows Flows ############################
+
+def plot_contours_true_learned_nf(flow, target_dist, toy_data=None, plt_min=0, plt_max=10):
+    fig, ax = plt.subplots(1, 2)
+    xline = torch.linspace(plt_min, plt_max)
+    yline = torch.linspace(plt_min, plt_max)
+    xgrid, ygrid = torch.meshgrid(xline, yline)
+    xyinput = torch.cat([xgrid.reshape(-1, 1), ygrid.reshape(-1, 1)], dim=1)
+
+    with torch.no_grad():
+        zgrid0 = flow.log_prob(xyinput).exp().reshape(100, 100)
+        if toy_data is None:
+            zgrid1 = target_dist.log_prob(xyinput).exp().reshape(100, 100)
+
+    ax[0].contourf(xgrid.numpy(), ygrid.numpy(), zgrid0.numpy())
+    ax[0].set_xlim(left=plt_min, right=plt_max)
+    ax[0].set_ylim(bottom=plt_min, top=plt_max)
+    ax[0].set_title('Learned')
+    if toy_data is not None:
+        ax[1].scatter(toy_data[:,0], toy_data[:,1], )
+    else:
+        ax[1].contourf(xgrid.numpy(), ygrid.numpy(), zgrid1.numpy())
+    ax[1].set_xlim(left=plt_min, right=plt_max)
+    ax[1].set_ylim(bottom=plt_min, top=plt_max)
+    ax[1].set_title('True')
     plt.show()
