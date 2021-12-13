@@ -46,7 +46,7 @@ def plot_2d_pdf_contours(target_dist, x_samples, flow, title=None, n=500, gaussi
 
 ############### Plot functions for nf_flows Flows ############################
 
-def plot_contours_true_learned_nf(flow, target_dist, toy_data=None, plt_min=0, plt_max=10):
+def plot_contours_true_learned_nf(flow, target_samples, plt_min=0, plt_max=10):
     fig, ax = plt.subplots(1, 2)
     xline = torch.linspace(plt_min, plt_max)
     yline = torch.linspace(plt_min, plt_max)
@@ -55,17 +55,13 @@ def plot_contours_true_learned_nf(flow, target_dist, toy_data=None, plt_min=0, p
 
     with torch.no_grad():
         zgrid0 = flow.log_prob(xyinput).exp().reshape(100, 100)
-        if toy_data is None:
-            zgrid1 = target_dist.log_prob(xyinput).exp().reshape(100, 100)
 
     ax[0].contourf(xgrid.numpy(), ygrid.numpy(), zgrid0.numpy())
     ax[0].set_xlim(left=plt_min, right=plt_max)
     ax[0].set_ylim(bottom=plt_min, top=plt_max)
     ax[0].set_title('Learned')
-    if toy_data is not None:
-        ax[1].scatter(toy_data[:,0], toy_data[:,1], )
-    else:
-        ax[1].contourf(xgrid.numpy(), ygrid.numpy(), zgrid1.numpy())
+
+    ax[1].scatter(target_samples[:,0], target_samples[:,1], )
     ax[1].set_xlim(left=plt_min, right=plt_max)
     ax[1].set_ylim(bottom=plt_min, top=plt_max)
     ax[1].set_title('True')

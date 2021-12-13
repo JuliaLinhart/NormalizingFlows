@@ -14,6 +14,7 @@ from sbi.utils.sbiutils import standardizing_transform
 def construct_maf(
     features, 
     hidden_features, 
+    context_features=None,
     num_layers=5, 
     random_permutation=False,
     standardize_transform = True,
@@ -38,7 +39,7 @@ def construct_maf(
         else:
             trans_components.append(transforms.ReversePermutation(features=d))
         trans_components.append(transforms.MaskedAffineAutoregressiveTransform(features=d, 
-                                                            hidden_features=hidden_features))
+                                                            hidden_features=hidden_features, context_features=context_features))
     transform = transforms.CompositeTransform(trans_components)
     
     if standardize_transform:
@@ -54,6 +55,7 @@ def construct_nsf(
     batch_x: torch.Tensor = None,
     z_score_x: bool = True,
     hidden_features: int = 50,
+    context_features: int = None,
     num_transforms: int = 5,
     num_bins: int = 10,
     embedding_net: nn.Module = nn.Identity(),
@@ -72,6 +74,7 @@ def construct_nsf(
         in_features=in_features,
         out_features=out_features,
         hidden_features=hidden_features,
+        context_features=context_features,
         num_blocks=2,
         activation=F.relu,
         dropout_probability=0.0,
