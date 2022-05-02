@@ -1,7 +1,7 @@
 """Functions to evaluate the learnt transformation/distribution."""
 
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt6
 import torch
 import seaborn as sns
 
@@ -9,19 +9,20 @@ import seaborn as sns
 
 # 1D distributions: Evaluate the learnt transformation by plotting the learnt p_x 
 # against the true distribution and the training samples (drawn from the true distribution)
-def plot_pdfs_1D(target_dist, x_samples, flow, title=None, x_i=0.1, x_f=15, n=100):
+def plot_pdfs_1D(target_dist, x_samples, flow=None, title=None, x_i=0.1, x_f=15, n=100):
     eval_x = torch.linspace(x_i, x_f, n)
-
-    p_x_learned = torch.exp(flow.learned_log_pdf(eval_x))
-
     p_x_true = torch.exp(target_dist.log_prob(eval_x))
+
+    if flow is not None:
+        p_x_learned = torch.exp(flow.learned_log_pdf(eval_x))
 
     fig = plt.figure(figsize=(6, 2))
     plt.plot(x_samples, np.zeros_like(x_samples), 'bx', alpha=0.5, markerfacecolor='none', markersize=6)
     plt.plot(eval_x.numpy(), p_x_true.detach().numpy(),'--', color='blue')
-    plt.plot(eval_x.numpy(), p_x_learned.detach().numpy(), color='orange')
+    if flow is not None:
+        plt.plot(eval_x.numpy(), p_x_learned.detach().numpy(), color='orange')
     plt.legend(["Samples", "True", "Learned"], loc="upper right")
-    _ = plt.xlim([0.1, 15]); _ = plt.ylim([-0.12, 3.2])
+    _ = plt.xlim([x_i, x_f]); _ = plt.ylim([-0.12, 3.2])
     plt.title(title)
     plt.show()
 
