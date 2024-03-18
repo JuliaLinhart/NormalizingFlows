@@ -21,8 +21,8 @@ For sampling we use the *forward transformation*:
 To evaluate the pdf we use the *inverse transformation*:
 ```math
 \begin{aligned}
-p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\operatorname{det} J_{T}(\mathbf{u}; \Phi)\right|^{-1} \quad \text { where } \quad \mathbf{u}=T^{-1}(\mathbf{x}; \Phi) \\
-& = p_{\mathrm{u}}\left(T^{-1}(\mathbf{x}; \Phi)\right)\left|\operatorname{det} J_{T^{-1}}(\mathbf{x}; \Phi)\right|
+p_{\mathrm{x}}(\mathbf{x}; \Phi) & = p_{\mathrm{u}}(\mathbf{u})\left|\det J_{T}(\mathbf{u}; \Phi)\right|^{-1} \quad \text { where } \quad \mathbf{u}=T^{-1}(\mathbf{x}; \Phi) \\
+& = p_{\mathrm{u}}\left(T^{-1}(\mathbf{x}; \Phi)\right)\left|\det J_{T^{-1}}(\mathbf{x}; \Phi)\right|
 \end{aligned}
 ```
 
